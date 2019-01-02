@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReporteDeJuegosDataSet" targetNamespace="http://tempuri.org/ReporteDeJuegosDataSet.xsd" xmlns:mstns="http://tempuri.org/ReporteDeJuegosDataSet.xsd" xmlns="http://tempuri.org/ReporteDeJuegosDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Prospect_AnalizerConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Prospect_AnalizerConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BaseBallAnalisis.Properties.Settings.GlobalReference.Default.Prospect_AnalizerConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Prospect_AnalizerConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillJuego" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="FillJuego" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="FillJuego">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Cantado.Cantado_Nombre, Turno_Bateo.Turno_Velocidad, Bola_Trayectoria.Bol_Nombre, Jugada.Jug_fuerzaBateo, Jugada.Jug_Primera, Jugada.Jug_Segunda, Jugada.Jug_Tercera, Inning.Inning_Numero, Inning.Inning_CarreraH, Inning.Inning_CarreraV, Nombre_Jugada.EstaBol_Nombre, Juegos.Juego_Fecha, Pitcheo.Pitch_Tipo, Equipo.Equip_Nombre, Jugador.Prosp_Nombre, Jugador.Prosp_Apellido, Posicion.Pos_Nombre, Strike_Zone.StrikeZ_Nombre, 
+         Swing.Swing_Nombre
+FROM  Cantado INNER JOIN
+         Turno_Bateo ON Cantado.Cantado_ID = Turno_Bateo.Cantado_ID INNER JOIN
+         Bola_Trayectoria INNER JOIN
+         Jugada ON Bola_Trayectoria.Bol_ID = Jugada.Bol_ID INNER JOIN
+         Inning ON Jugada.Jug_ID = Inning.Jug_ID INNER JOIN
+         Nombre_Jugada ON Jugada.EstaBol_ID = Nombre_Jugada.EstaBol_ID INNER JOIN
+         Rel_Ining_Jugada INNER JOIN
+         Juegos ON Rel_Ining_Jugada.Juego_ID = Juegos.Juego_ID ON Inning.Inning_ID = Rel_Ining_Jugada.Inning_ID ON Turno_Bateo.Turno_ID = Inning.Turno_ID INNER JOIN
+         Pitcheo ON Turno_Bateo.Pitch_ID = Pitcheo.Pitch_ID INNER JOIN
+         Relacion_Bateo_Jugador INNER JOIN
+         Equipo INNER JOIN
+         Jugador ON Equipo.Equip_ID = Jugador.Equip_ID ON Relacion_Bateo_Jugador.Prosp_Documento = Jugador.Prosp_Documento INNER JOIN
+         Relacion_Prospecto_Posicion ON Jugador.Prosp_Documento = Relacion_Prospecto_Posicion.Prosp_Documento INNER JOIN
+         Posicion ON Relacion_Prospecto_Posicion.Pos_ID = Posicion.Pos_ID ON Turno_Bateo.Turno_ID = Relacion_Bateo_Jugador.Turno_ID INNER JOIN
+         Strike_Zone ON Turno_Bateo.StrikeZ_ID = Strike_Zone.StrikeZ_ID INNER JOIN
+         Swing ON Turno_Bateo.Swing_ID = Swing.Swing_ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Cantado_Nombre" DataSetColumn="Cantado_Nombre" />
+              <Mapping SourceColumn="Turno_Velocidad" DataSetColumn="Turno_Velocidad" />
+              <Mapping SourceColumn="Bol_Nombre" DataSetColumn="Bol_Nombre" />
+              <Mapping SourceColumn="Jug_fuerzaBateo" DataSetColumn="Jug_fuerzaBateo" />
+              <Mapping SourceColumn="Jug_Primera" DataSetColumn="Jug_Primera" />
+              <Mapping SourceColumn="Jug_Segunda" DataSetColumn="Jug_Segunda" />
+              <Mapping SourceColumn="Jug_Tercera" DataSetColumn="Jug_Tercera" />
+              <Mapping SourceColumn="Inning_Numero" DataSetColumn="Inning_Numero" />
+              <Mapping SourceColumn="Inning_CarreraH" DataSetColumn="Inning_CarreraH" />
+              <Mapping SourceColumn="Inning_CarreraV" DataSetColumn="Inning_CarreraV" />
+              <Mapping SourceColumn="EstaBol_Nombre" DataSetColumn="EstaBol_Nombre" />
+              <Mapping SourceColumn="Juego_Fecha" DataSetColumn="Juego_Fecha" />
+              <Mapping SourceColumn="Pitch_Tipo" DataSetColumn="Pitch_Tipo" />
+              <Mapping SourceColumn="Equip_Nombre" DataSetColumn="Equip_Nombre" />
+              <Mapping SourceColumn="Prosp_Nombre" DataSetColumn="Prosp_Nombre" />
+              <Mapping SourceColumn="Prosp_Apellido" DataSetColumn="Prosp_Apellido" />
+              <Mapping SourceColumn="Pos_Nombre" DataSetColumn="Pos_Nombre" />
+              <Mapping SourceColumn="StrikeZ_Nombre" DataSetColumn="StrikeZ_Nombre" />
+              <Mapping SourceColumn="Swing_Nombre" DataSetColumn="Swing_Nombre" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReporteDeJuegosDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReporteDeJuegosDataSet" msprop:Generator_UserDSName="ReporteDeJuegosDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cantado_Nombre" msprop:Generator_ColumnVarNameInTable="columnCantado_Nombre" msprop:Generator_ColumnPropNameInRow="Cantado_Nombre" msprop:Generator_ColumnPropNameInTable="Cantado_NombreColumn" msprop:Generator_UserColumnName="Cantado_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Turno_Velocidad" msprop:Generator_ColumnVarNameInTable="columnTurno_Velocidad" msprop:Generator_ColumnPropNameInRow="Turno_Velocidad" msprop:Generator_ColumnPropNameInTable="Turno_VelocidadColumn" msprop:Generator_UserColumnName="Turno_Velocidad" type="xs:int" />
+              <xs:element name="Bol_Nombre" msprop:Generator_ColumnVarNameInTable="columnBol_Nombre" msprop:Generator_ColumnPropNameInRow="Bol_Nombre" msprop:Generator_ColumnPropNameInTable="Bol_NombreColumn" msprop:Generator_UserColumnName="Bol_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Jug_fuerzaBateo" msprop:Generator_ColumnVarNameInTable="columnJug_fuerzaBateo" msprop:Generator_ColumnPropNameInRow="Jug_fuerzaBateo" msprop:Generator_ColumnPropNameInTable="Jug_fuerzaBateoColumn" msprop:Generator_UserColumnName="Jug_fuerzaBateo" type="xs:int" />
+              <xs:element name="Jug_Primera" msprop:Generator_ColumnVarNameInTable="columnJug_Primera" msprop:Generator_ColumnPropNameInRow="Jug_Primera" msprop:Generator_ColumnPropNameInTable="Jug_PrimeraColumn" msprop:Generator_UserColumnName="Jug_Primera" type="xs:boolean" />
+              <xs:element name="Jug_Segunda" msprop:Generator_ColumnVarNameInTable="columnJug_Segunda" msprop:Generator_ColumnPropNameInRow="Jug_Segunda" msprop:Generator_ColumnPropNameInTable="Jug_SegundaColumn" msprop:Generator_UserColumnName="Jug_Segunda" type="xs:boolean" />
+              <xs:element name="Jug_Tercera" msprop:Generator_ColumnVarNameInTable="columnJug_Tercera" msprop:Generator_ColumnPropNameInRow="Jug_Tercera" msprop:Generator_ColumnPropNameInTable="Jug_TerceraColumn" msprop:Generator_UserColumnName="Jug_Tercera" type="xs:boolean" />
+              <xs:element name="Inning_Numero" msprop:Generator_ColumnVarNameInTable="columnInning_Numero" msprop:Generator_ColumnPropNameInRow="Inning_Numero" msprop:Generator_ColumnPropNameInTable="Inning_NumeroColumn" msprop:Generator_UserColumnName="Inning_Numero">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Inning_CarreraH" msprop:Generator_ColumnVarNameInTable="columnInning_CarreraH" msprop:Generator_ColumnPropNameInRow="Inning_CarreraH" msprop:Generator_ColumnPropNameInTable="Inning_CarreraHColumn" msprop:Generator_UserColumnName="Inning_CarreraH" type="xs:int" />
+              <xs:element name="Inning_CarreraV" msprop:Generator_ColumnVarNameInTable="columnInning_CarreraV" msprop:Generator_ColumnPropNameInRow="Inning_CarreraV" msprop:Generator_ColumnPropNameInTable="Inning_CarreraVColumn" msprop:Generator_UserColumnName="Inning_CarreraV" type="xs:int" />
+              <xs:element name="EstaBol_Nombre" msprop:Generator_ColumnVarNameInTable="columnEstaBol_Nombre" msprop:Generator_ColumnPropNameInRow="EstaBol_Nombre" msprop:Generator_ColumnPropNameInTable="EstaBol_NombreColumn" msprop:Generator_UserColumnName="EstaBol_Nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Juego_Fecha" msprop:Generator_ColumnVarNameInTable="columnJuego_Fecha" msprop:Generator_ColumnPropNameInRow="Juego_Fecha" msprop:Generator_ColumnPropNameInTable="Juego_FechaColumn" msprop:Generator_UserColumnName="Juego_Fecha" type="xs:dateTime" />
+              <xs:element name="Pitch_Tipo" msprop:Generator_ColumnVarNameInTable="columnPitch_Tipo" msprop:Generator_ColumnPropNameInRow="Pitch_Tipo" msprop:Generator_ColumnPropNameInTable="Pitch_TipoColumn" msprop:Generator_UserColumnName="Pitch_Tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Equip_Nombre" msprop:Generator_ColumnVarNameInTable="columnEquip_Nombre" msprop:Generator_ColumnPropNameInRow="Equip_Nombre" msprop:Generator_ColumnPropNameInTable="Equip_NombreColumn" msprop:Generator_UserColumnName="Equip_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Prosp_Nombre" msprop:Generator_ColumnVarNameInTable="columnProsp_Nombre" msprop:Generator_ColumnPropNameInRow="Prosp_Nombre" msprop:Generator_ColumnPropNameInTable="Prosp_NombreColumn" msprop:Generator_UserColumnName="Prosp_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Prosp_Apellido" msprop:Generator_ColumnVarNameInTable="columnProsp_Apellido" msprop:Generator_ColumnPropNameInRow="Prosp_Apellido" msprop:Generator_ColumnPropNameInTable="Prosp_ApellidoColumn" msprop:Generator_UserColumnName="Prosp_Apellido">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Pos_Nombre" msprop:Generator_ColumnVarNameInTable="columnPos_Nombre" msprop:Generator_ColumnPropNameInRow="Pos_Nombre" msprop:Generator_ColumnPropNameInTable="Pos_NombreColumn" msprop:Generator_UserColumnName="Pos_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StrikeZ_Nombre" msprop:Generator_ColumnVarNameInTable="columnStrikeZ_Nombre" msprop:Generator_ColumnPropNameInRow="StrikeZ_Nombre" msprop:Generator_ColumnPropNameInTable="StrikeZ_NombreColumn" msprop:Generator_UserColumnName="StrikeZ_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Swing_Nombre" msprop:Generator_ColumnVarNameInTable="columnSwing_Nombre" msprop:Generator_ColumnPropNameInRow="Swing_Nombre" msprop:Generator_ColumnPropNameInTable="Swing_NombreColumn" msprop:Generator_UserColumnName="Swing_Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
